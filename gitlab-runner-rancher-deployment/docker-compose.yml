@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+  gitlab-runner-rancher-deployment:
+    build:
+      context: .
+    environment:
+      - RUNNER_NAME=testing
+      - RANCHER_URL
+      - RANCHER_ENVIRONMENT
+      - RANCHER_ACCESS_KEY
+      - RANCHER_SECRET_KEY
+      - CI_SERVER_URL
+      - REGISTRATION_TOKEN
+      - DRY_RUN

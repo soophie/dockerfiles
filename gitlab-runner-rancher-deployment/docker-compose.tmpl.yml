@@ -1,0 +1,15 @@
+version: '2'
+services:
+  {{.Env.RUNNER_NAME}}-gitlab-runner:
+    image: 7val/gitlab-runner
+    volumes:
+      - {{.Env.RUNNER_NAME}}-gitlab-runner-etc:/etc/gitlab-runner
+      - {{.Env.RUNNER_NAME}}-gitlab-runner-home:/home/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      CI_SERVER_URL: {{.Env.CI_SERVER_URL}}
+      REGISTRATION_TOKEN: {{.Env.REGISTRATION_TOKEN}}
+      RUNNER_NAME: {{.Env.RUNNER_NAME}}
+    labels:
+      io.rancher.container.pull_image: always
+      service: {{.Env.RUNNER_NAME}}-gitlab-runner
